@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Home v-if="currentView == 'show-home'" />
+    <AddCard v-else-if="currentView == 'show-addcard'" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './views/Home.vue'
+import AddCard from './views/AddCard.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home,
+    AddCard
+  },
+  data() {
+    return {
+      currentView: "show-home",
+      currentButton: "card"
+    }
+  },
+  methods: {
+      addCard() {
+          this.currentView = "show-addcard"
+      }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    width: 414px;
+    height: 896px;
+}
+
+p {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 </style>
