@@ -1,32 +1,40 @@
 <template>
-  <header class="title">
-    <h1>E-wallet</h1>
-    <p>Active card</p>
-    <button @click="addCard">Add new card</button>
-  </header>
+  <div class="home">
+    <h1>{{ title }}</h1>
+    <p>Active Card</p>
+    <button @click="toggleView">ADD A NEW CARD</button>
+  </div>
 </template>
 
 <script>
 export default {
     data() {
         return{
-            currentView: "show-home",
-            currentButton: "card"
+            title: "E-WALLET"
         }
     },
     methods: {
-        addCard() {
-            this.currentView = "show-addcard"
+        toggleView() {
+            this.$emit("gotoaddcard")
         }
     }
 }
 </script>
 
+<style scoped>
+.home {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    max-width: 30rem;
+    min-height: 100vh;
 }
-<style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-body {
-    display: flex;
 
+p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(100, 100, 100);
+    margin-bottom: 1rem;
 }
 </style>
