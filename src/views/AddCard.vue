@@ -1,17 +1,17 @@
 <template>
     <div class="add-card">
         <h1>{{ title }}</h1>
-        <p>New Card</p>
-        <Anothercard />
+        <p>NEW CARD</p>
+        <BankCard :cardInfo="cardInfo" />
         <button @click="toggleView">ADD CARD</button>
     </div>
 </template>
 
 <script>
-import Anothercard from '../components/BankCard.vue';
+import BankCard from '../components/BankCard.vue';
 export default {
     components: {
-        Anothercard
+        BankCard
     },
     data() {
         return {
@@ -32,7 +32,7 @@ export default {
     flex-direction: column;
     align-items: center; */
     max-width: 30rem;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 p {
