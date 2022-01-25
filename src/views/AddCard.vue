@@ -1,26 +1,20 @@
 <template>
     <div class="add-card">
-        <h1>{{ title }}</h1>
-        <p>NEW CARD</p>
-        <BankCard :cardInfo="cardInfo" />
-        <button @click="toggleView">ADD CARD</button>
+        <h1>ADD A NEW BANK CARD</h1>
+        <p class="new-card">NEW CARD</p>
+        <BankCardForm @click="$emit('toProcessCard')" />
+        <button @click="jumpTo">ADD CARD</button>
     </div>
 </template>
 
 <script>
-import BankCard from '../components/BankCard.vue';
+import BankCardForm from '../components/BankCardForm';
 export default {
-    components: {
-        BankCard
-    },
-    data() {
-        return {
-            title: "ADD A NEW BANK CARD",
-        }
-    },
+    name: "AddCard",
+    components: { BankCardForm },
     methods: {
-        toggleView() {
-            this.$emit("gotohome")
+        jumpTo() {
+            this.$emit("goto")
         }
     }
 }

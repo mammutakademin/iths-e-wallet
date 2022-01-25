@@ -1,28 +1,10 @@
 <template>
-    <div class="card" :class="cardData.vendor" v-on:click=$emit("clicked")>
-      <img v-if="cardData.vendor == 'blockchain'"
-        :src="'../assets/chip-dark.svg'"
-        alt="chip-icon"
-        class="chip-icon"
-      >
+    <div class="card-template">
+      <div class="wifi-icon">
+        <img :src="wifi" />
 
-      <img v-else
-        :src="'../assets/chip-light.svg'"
-        alt="chip-icon"
-        class="chip-icon"
-      >
-
-      <img v-if="cardData.vendor"
-        :src="'../assets/vendor-' + cardData.vendor + '.svg'"
-        alt="vendor-icon"
-        class="vendor-icon"
-      >
-
-      <p class="number" v-if="cardData.number">{{ cardNumber }}</p>
-      <h4 class="holder-heading">CARDHOLDER</h4>
-      <p class="holder">{{ cardHolder }}</p>
-      <h4 class="valid-heading">VALID THRU</h4>
-      <p class="valid-date">{{ cardData.validMonth }}/ {{ cardData.validYear }}</p>
+        
+      </div>
     </div>
 </template>
 

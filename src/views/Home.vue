@@ -1,42 +1,23 @@
 <template>
   <div class="home">
-    <HeaderSection :heading="title"/>
-    <p v-if="cards.length > 0">ACTIVE CARD</p>
-    <BankCard v-if="cards.length > 0" :cardData="activeCard" class="active-card">
-    <ButtonCta class="add-card-button" :text="buttonTxt" />
+    <h1>E-WALLET</h1>
+    <p>ACTIVE CARD</p>
+    <!-- <BankCard class="active-card" /> -->
+    <button @click="jumpTo">ADD A NEW CARD</button>
   </div>
 </template>
 
 <script>
-import BankCard from "../components/BankCard.vue"
-import ButtonCta from "../components/ButtonCta.vue"
+// import BankCard from "../components/BankCard"
 
 export default {
-    components: {
-        BankCard,
-        ButtonCta
-    },
-    data() {
-        return {
-            title: "E-WALLET",
-            buttonTxt: "ADD NEW CARD",
-            activeCard: this.$root.cards[0]
-        }
-    },
-    computed: {
-        cards() {
-            return this.$root.cards
-        }
-    },
+    // components: {
+    //     BankCard
+    // },
+
     methods: {
-        getCard(clickedCard) {
-            this.activeCard = clickedCard
-        },
-        resetActiveCard() {
-            this.activeCard = this.$root.cards[0]
-        },
-        toggleView() {
-            this.$emit("gotoaddcard")
+        jumpTo() {
+            this.$emit("goto")
         }
     }
 }
@@ -59,8 +40,4 @@ p {
     margin-bottom: 1rem;
 }
 
-.active-card {
-    box-shadow: 0 0.1rem 0.04rem 0 rgba(0, 0, 0, 0.5);
-    margin-bottom: 1rem;
-}
 </style>

@@ -1,21 +1,40 @@
 <template>
-  <div>
-    <Bankard />
-    <form class="card-form" @submit.prevent="submit">
-        <label for="cardNumber">CARD NUMBER</label>
-        <input type="number" v-model="cardDetail.cardNumber" placeholder="Card number">
+  <div class="register-form">
+    <form class="card-form" @submit.prevent="toCreateCard">
+        <label for="cardnumber">CARD NUMBER</label>
+        <input required
+            class="card-number"
+            type="text"
+            v-model="cardDetail.cardNumber"
+            placeholder="XXXX XXXX XXXX XXXX"
+        />
         
-        <label for="cardHolder">CARDHOLDER NAME</label>
-        <input type="text" v-model="cardDetail.cardHolder" placeholder="Cardholder's name">
+        <label for="cardholder-name">CARDHOLDER NAME</label>
+        <input required
+            class="cardholder-name"
+            type="text"
+            v-model="cardDetail.cardHolderName"
+            placeholder="FIRSTNAME LASTNAME"
+        />
         
-        <label for="month">MONTH</label>
-        <input type="number" placeholder="Month" v-model="cardDetail.validMonth" min="1" max="12">
+        <div class="validity-date">
+            <label for="month">MONTH</label>
+            <select name="month" id="month" v-model="cardDetail.month">
+                <option name="month" value="month" v-for="month in months" :key="month">
+                    {{ month }}
+                </option>
+            </select>
+        </div>
         
         <label for="year">YEAR</label>
-        <input type="number" placeholder="Year" v-model="cardDetail.validYear" min="2022">
+            <select name="year" id="year" v-model="cardDetail.year">
+                <option name="year" value="year" v-for="year in years" :key="year">
+                    {{ year }}
+                </option>
+            </select>
         
         <label for="vendor">VENDOR</label>
-        <select v-model="cardDetail.vendor" name="vendor" id="vendor">
+        <select class="vendor" v-model="cardDetail.vendor" name="vendor" id="vendor">
             <option value="00">-</option>
             <option value="bitcoin">Bitcoin Inc</option>
             <option value="blockchain">Blockchain Inc</option>
@@ -26,18 +45,18 @@
         <label for="ccv">CCV</label>
         <input v-model="cardDetail.CCV" type="text" placeholder="">
         
-        <button @click="addCard">ADD CARD</button>
+        <button @click="addCard">CREATE THIS CARD RIGHT NOW</button>
     </form>
+    <Bankard />
   </div>
 </template>
 
 <script>
-import BankCard from "./BankCard.vue"
+// import BankCard from "./BankCard"
 
 export default {
-    components: {
-        BankCard
-        },
+    // components: { BankCard },
+    
     data() {
         return {
             cardArray: [],
@@ -47,7 +66,7 @@ export default {
                 cardHolder: "",
                 expireMonth: "",
                 expireYear: "",
-                CCV: ""
+                ccv: ""
             }
         }
     },

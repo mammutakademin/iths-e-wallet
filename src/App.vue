@@ -1,29 +1,36 @@
 <template>
   <div id="app">
-    <Home v-if="activePage == 'home'" @gotoaddcard="activePage = 'addcard'" />
-    <AddCard v-else-if="activePage == 'addcard'" @gotohome="currentView = 'home'" />
+  
+    <Home v-if="thePage == 'home'" @goto=thisDirection />
+    <AddCard v-else-if="thePage == 'addcard'" @goto=thisDirection />
   </div>
 </template>
 
 <script>
-import Home from './views/Home.vue'
-import AddCard from './views/AddCard.vue'
+import Home from './views/Home'
+import AddCard from './views/AddCard'
 
 export default {
-  name: 'App',
-  components: {
-    Home,
-    AddCard
-  },
+  name: "App",
+  components: { Home, AddCard },
   data() {
     return {
-      activePage: "home",
+      thePage: "home",
+      creditCardList: []
     }
   },
+  methods: {
+    thisDirection() {
+      this.thePage == "home" ? this.thePage = "addcard" : this.thePage = "home"
+    },
+    addCardPayload(cardpayload) {
+      this.creditCardList.push(cardpayload)
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Source+Sans+Pro:wght@300;400&display=swap');
 
 * {
@@ -48,12 +55,12 @@ h1, h2, h3 {
 p {
   font-family: 'PT Mono', monospace;
 }
-#app {
+/* #app {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   color: #2c3e50;
   margin-top: 1rem;
-}
+} */
 </style>
