@@ -1,40 +1,31 @@
 <template>
   <div class="register-form">
-    <form class="card-form" @submit.prevent="toCreateCard">
-        <label for="cardnumber">CARD NUMBER</label>
+	<BankCard :card="cardDetail" />
+    <form class="card-form" @submit.prevent="addCard">
+        <label for="cardNumber">CARD NUMBER</label>
+		<input required
+			class="card-number"
+			type="text"
+			v-model="cardDetail.cardNumber"
+			placeholder="XXXX XXXX XXXX XXXX"
+		/>
+
+        <label for="cardHolder-name">CARDHOLDER NAME</label>
         <input required
-            class="card-number"
-            type="text"
-            v-model="cardDetail.cardNumber"
-            placeholder="XXXX XXXX XXXX XXXX"
-        />
+			class="cardholder-name"
+			type="text"
+			v-model="cardDetail.cardHolderName"
+			placeholder="FIRSTNAME LASTNAME"
+		/>
         
-        <label for="cardholder-name">CARDHOLDER NAME</label>
-        <input required
-            class="cardholder-name"
-            type="text"
-            v-model="cardDetail.cardHolderName"
-            placeholder="FIRSTNAME LASTNAME"
-        />
-        
-        <div class="validity-date">
-            <label for="month">MONTH</label>
-            <select name="month" id="month" v-model="cardDetail.month">
-                <option name="month" value="month" v-for="month in months" :key="month">
-                    {{ month }}
-                </option>
-            </select>
-        </div>
+        <label for="month">MONTH</label>
+        <input type="number" placeholder="Month" v-model="cardDetail.validMonth" min="1" max="12">
         
         <label for="year">YEAR</label>
-            <select name="year" id="year" v-model="cardDetail.year">
-                <option name="year" value="year" v-for="year in years" :key="year">
-                    {{ year }}
-                </option>
-            </select>
+        <input type="number" placeholder="Year" v-model="cardDetail.validYear" min="2022">
         
         <label for="vendor">VENDOR</label>
-        <select class="vendor" v-model="cardDetail.vendor" name="vendor" id="vendor">
+        <select v-model="cardDetail.vendor" name="vendor" id="vendor">
             <option value="00">-</option>
             <option value="bitcoin">Bitcoin Inc</option>
             <option value="blockchain">Blockchain Inc</option>
@@ -45,28 +36,28 @@
         <label for="ccv">CCV</label>
         <input v-model="cardDetail.CCV" type="text" placeholder="">
         
-        <button @click="addCard">CREATE THIS CARD RIGHT NOW</button>
+        <button @click="addCard">ADD CARD</button>
     </form>
-    <Bankard />
   </div>
 </template>
 
 <script>
-// import BankCard from "./BankCard"
+import BankCard from "./BankCard.vue"
 
 export default {
-    // components: { BankCard },
-    
+	name: "BankCardForm",
+    components: { BankCard },
+	props: [""],	
     data() {
         return {
             cardArray: [],
             cardDetail: {
                 vendor: "",
                 cardNumber: "",
-                cardHolder: "",
-                expireMonth: "",
-                expireYear: "",
-                ccv: ""
+                cardHolderName: "",
+                validMonth: "",
+                validYear: "",
+                CCV: ""
             }
         }
     },
@@ -81,15 +72,56 @@ export default {
 </script>
 
 <style scoped>
-    form {
-        margin-top: 400px;
+	.register-form {
+		margin: auto;
+		width: 400px;
+	}
+
+	.card-form {
+		display: flex;
+		flex-direction: column;
+		width: 380px;
+		margin-left: 10px;
+        margin-top: 40px;
     }
 
-    input[type=text] {
-        background-color: white;
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        padding-left: 40px;
-        height: 40px;
-    }
+	label {
+		align-self: flex-start;
+		font-size: 12px;
+		font-family: 'PT Mono', monospace;
+	}
+
+	input, select {
+		border-radius: 5px;
+		font-size: 12px;
+		padding: 10px;
+		border-width: 1px;
+		margin-top: 5px;
+		margin-bottom: 15px;
+	}
+
+	input[type=text]:focus {
+		border: 1px solid gainsboro;
+	}
+
+	select {
+		width: 170px;
+	}
+
+	button {
+		font-size: 22px;
+		padding: 1rem;
+		border-radius: 5px;
+		margin-top: 2rem;
+		border-width: 2px;
+		background-color: whitesmoke;
+		font-weight: bold;
+	}
+
+	button:hover {
+		background-color: thistle;
+		color: brown;
+	}
+
+
 </style>

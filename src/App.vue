@@ -1,8 +1,13 @@
 <template>
   <div id="app">
-  
-    <Home v-if="thePage == 'home'" @goto=thisDirection />
-    <AddCard v-else-if="thePage == 'addcard'" @goto=thisDirection />
+    <Home v-if="currentPage == 'Home'" 
+    :cards="cards" 
+    @toggleToAddCard="currentPage = 'AddCard'" 
+    />
+
+    <AddCard v-else-if="currentPage == 'AddCard'" 
+    @toggleToMain="addCard" 
+    />
   </div>
 </template>
 
@@ -11,20 +16,43 @@ import Home from './views/Home'
 import AddCard from './views/AddCard'
 
 export default {
-  name: "App",
+  name: 'App',
   components: { Home, AddCard },
   data() {
     return {
-      thePage: "home",
-      creditCardList: []
+      currentPage: "Home",
+      cards: [
+        {
+          vendorName: "blockchain",
+          cardNumber: "1111 2222 3333 4444",
+          cardHolderName: "Austin Powers",
+          validMonth: "03",
+          validYear: "24"
+        },
+        {
+          vendorName: "evil",
+          cardNumber: "0661 6226 0333 0020",
+          cardHolderName: "Megan Markle",
+          validMonth: "08",
+          validYear: "23"
+        },
+        {
+          vendorName: "ninja",
+          cardNumber: "1213 1234 5555 1908",
+          cardHolderName: "O Ren Shii",
+          validMonth: "12",
+          validYear: "26"
+        },
+      ],
     }
   },
   methods: {
-    thisDirection() {
-      this.thePage == "home" ? this.thePage = "addcard" : this.thePage = "home"
-    },
-    addCardPayload(cardpayload) {
-      this.creditCardList.push(cardpayload)
+    // changeView() {
+    //   this.currentPage == "Home" ? this.currentPage == "AddCard" : this.currentPage == "Home"
+    // },
+    addCard(cardData) {
+      this.cards.push(cardData)
+      this.currentPage = "Home"
     }
   }
 }
@@ -39,11 +67,13 @@ export default {
   box-sizing: border-box;
 }
 
-div {
+#app {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  background-color: burlywood;
+  align-items: center;
+  text-align: center;
+  background-color: #fdf6cf;
+  color: #2c3e50;
   margin: 10rem 15rem;
   width: 33rem;
   height: 896px;
@@ -55,12 +85,5 @@ h1, h2, h3 {
 p {
   font-family: 'PT Mono', monospace;
 }
-/* #app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 1rem;
-} */
+
 </style>

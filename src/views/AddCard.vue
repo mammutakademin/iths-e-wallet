@@ -1,7 +1,7 @@
 <template>
-    <div class="add-card">
+    <div class="addcard">
         <h1>ADD A NEW BANK CARD</h1>
-        <p class="new-card">NEW CARD</p>
+        <p>NEW CARD</p>
         <BankCardForm @click="$emit('toProcessCard')" />
         <button @click="jumpTo">ADD CARD</button>
     </div>
@@ -9,24 +9,29 @@
 
 <script>
 import BankCardForm from '../components/BankCardForm';
+
 export default {
     name: "AddCard",
     components: { BankCardForm },
+    data() {
+        return {
+            infoEntered: []
+        }
+    },
     methods: {
         jumpTo() {
-            this.$emit("goto")
+            this.$emit("toggleToMain")
+        },
+        toProcessCard() {
+            this.infoEntered
         }
     }
 }
 </script>
 
 <style scoped>
-.add-card {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+.addcard {
     max-width: 30rem;
-    /* min-height: 100vh; */
 }
 
 p {

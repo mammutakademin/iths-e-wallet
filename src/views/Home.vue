@@ -1,35 +1,36 @@
 <template>
   <div class="home">
-    <h1>E-WALLET</h1>
+	<h1>E-WALLET</h1>
     <p>ACTIVE CARD</p>
-    <!-- <BankCard class="active-card" /> -->
-    <button @click="jumpTo">ADD A NEW CARD</button>
+	<BankCard :card="card" />
+    <!-- <BankCard class="card-tray" :cards="creditCardList" v-for="card in cards" :key="card.cardNumber" /> -->
+    <button @click="toggleView">ADD A NEW CARD</button>
   </div>
 </template>
 
 <script>
-// import BankCard from "../components/BankCard"
+import BankCard from "../components/BankCard"
 
 export default {
-    // components: {
-    //     BankCard
-    // },
-
+    components: { BankCard },
+	props: ['card'],
     methods: {
-        jumpTo() {
-            this.$emit("goto")
-        }
+		toggleView() {
+			this.$emit("toggleToAddCard")
+		}
     }
 }
 </script>
 
 <style scoped>
 .home {
-    /* display: flex;
+	display: flex;
     flex-direction: column;
-    align-items: center; */
+    align-items: center;
     max-width: 30rem;
-    /* min-height: 100vh; */
+    height: 100vh;
+	box-sizing: border-box;
+	padding: 8px 10px;
 }
 
 p {
@@ -40,4 +41,15 @@ p {
     margin-bottom: 1rem;
 }
 
+.card-tray {
+	margin-top: 3rem;
+	display: grid;
+	grid-auto-rows: 4rem
+}
+
+button {
+	width: 30rem;
+	font-weight: 100;
+	padding: 1rem;
+}
 </style>
