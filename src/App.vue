@@ -6,7 +6,7 @@
     />
 
     <AddCard v-else-if="currentPage == 'AddCard'" 
-    @toggleToMain="addCard" 
+    @toWallet="addCard" 
     />
   </div>
 </template>
@@ -51,9 +51,11 @@ export default {
     //   this.currentPage == "Home" ? this.currentPage == "AddCard" : this.currentPage == "Home"
     // },
     addCard(cardData) {
+      this.card = cardData
       this.cards.push(cardData)
       this.currentPage = "Home"
-    }
+    },
+
   }
 }
 </script>

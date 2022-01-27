@@ -2,8 +2,8 @@
     <div class="addcard">
         <h1>ADD A NEW BANK CARD</h1>
         <p>NEW CARD</p>
-        <BankCardForm @click="$emit('toProcessCard')" />
-        <button @click="jumpTo">ADD CARD</button>
+        <BankCard class="card" :cardData="newCard"/>
+        <BankCardForm @submittedForm="processCard" />
     </div>
 </template>
 
@@ -15,15 +15,22 @@ export default {
     components: { BankCardForm },
     data() {
         return {
-            infoEntered: []
+            newCard: {
+                cardNumber: "",
+                cardHolderName: "",
+                vendor: "",
+                validMonth: "MM",
+                validYear: "YY"
+            },
         }
     },
     methods: {
         jumpTo() {
             this.$emit("toggleToMain")
         },
-        toProcessCard() {
-            this.infoEntered
+        processCard(cardDetail) {
+            this.card = cardDetail
+            this.$emit('toWallet', this.card)
         }
     }
 }
@@ -40,5 +47,8 @@ p {
     text-align: center;
     color: rgb(100, 100, 100);
     margin-bottom: 1rem;
+}
+.card{
+    box-shadow: 0 0.1rem 0.4rem 0 rgba(0, 0, 0, 0.5);
 }
 </style>

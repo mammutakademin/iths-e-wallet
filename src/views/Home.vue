@@ -2,8 +2,7 @@
   <div class="home">
 	<h1>E-WALLET</h1>
     <p>ACTIVE CARD</p>
-	<BankCard :card="card" />
-    <!-- <BankCard class="card-tray" :cards="creditCardList" v-for="card in cards" :key="card.cardNumber" /> -->
+    <BankCard />
     <button @click="toggleView">ADD A NEW CARD</button>
   </div>
 </template>
@@ -13,7 +12,7 @@ import BankCard from "../components/BankCard"
 
 export default {
     components: { BankCard },
-	props: ['card'],
+    props: ['card'],
     methods: {
 		toggleView() {
 			this.$emit("toggleToAddCard")
@@ -29,8 +28,8 @@ export default {
     align-items: center;
     max-width: 30rem;
     height: 100vh;
-	box-sizing: border-box;
-	padding: 8px 10px;
+    box-sizing: border-box;
+    padding: 8px 10px;
 }
 
 p {

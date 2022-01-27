@@ -18,14 +18,20 @@
 			placeholder="FIRSTNAME LASTNAME"
 		/>
         
-        <label for="month">MONTH</label>
-        <input type="number" placeholder="Month" v-model="cardDetail.validMonth" min="1" max="12">
+		<div class="expirySection">
+			<div class="card-validity">
+				<label for="month">MONTH</label>
+				<input type="number" v-model="cardDetail.validMonth" min="1" max="12">
+			</div>
+			<div class="card-validity">
+				<label for="year">YEAR</label>
+				<input type="number" v-model="cardDetail.validYear" min="2022">
+			</div>
+		</div>
         
-        <label for="year">YEAR</label>
-        <input type="number" placeholder="Year" v-model="cardDetail.validYear" min="2022">
         
         <label for="vendor">VENDOR</label>
-        <select v-model="cardDetail.vendor" name="vendor" id="vendor">
+        <select class="vendor" v-model="cardDetail.vendor" name="vendor" id="vendor">
             <option value="00">-</option>
             <option value="bitcoin">Bitcoin Inc</option>
             <option value="blockchain">Blockchain Inc</option>
@@ -33,9 +39,6 @@
             <option value="ninja">Ninja Bank</option>
         </select>
     
-        <label for="ccv">CCV</label>
-        <input v-model="cardDetail.CCV" type="text" placeholder="">
-        
         <button @click="addCard">ADD CARD</button>
     </form>
   </div>
@@ -64,14 +67,13 @@ export default {
     
     methods: {
         addCard() {
-            this.$root.data.cardArray.push(this.cardDetail)
-            this.cardDetail = {}
+            this.$emit("submittedForm", this.cardDetail)
         }
     }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.register-form {
 		margin: auto;
 		width: 400px;
@@ -85,6 +87,21 @@ export default {
         margin-top: 40px;
     }
 
+	.expirySection {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.expirySection .card-validity {
+		display: flex;
+		flex-direction: column;
+
+		input {
+			width: 150px;
+		}
+	}
+
 	label {
 		align-self: flex-start;
 		font-size: 12px;
@@ -96,7 +113,7 @@ export default {
 		font-size: 12px;
 		padding: 10px;
 		border-width: 1px;
-		margin-top: 5px;
+		margin-top: 3px;
 		margin-bottom: 15px;
 	}
 
@@ -123,5 +140,8 @@ export default {
 		color: brown;
 	}
 
+	.vendor {
+		width: 380px;
+	}
 
 </style>
