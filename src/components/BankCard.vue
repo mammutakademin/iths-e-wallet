@@ -12,16 +12,16 @@
         <div class="cardNumber">
             <h3>{{spaceNumbers}}</h3>
         </div>
-        <div class="cardHolder">
-            <div class="cardNameWrapper">
+        <div class="cardNameSection">
+            <div class="cardNameLabel">
                 <p>CARDHOLDER NAME</p>
-                <div class="cardNames">
+                <div class="cardHolderName">
                     <p>{{card.cardHolderName}}</p>
                 </div>     
             </div>
-            <div class="validWrapper">
+            <div class="cardValidity">
               <p>VALID UNTIL</p>
-              <div class="expiremonthWrapper">
+              <div class="monthAndYear">
                   {{validDate}}
               </div>          
             </div>           
@@ -108,30 +108,30 @@ export default {
     text-align: center;
 
 }
-.cardHolder{
+.cardNameSection{
     display: flex;
     justify-content: space-between;
 }
-.cardNameWrapper p{
+.cardNameLabel p{
     padding: 5px;
 }
-.cardNames{
+.cardHolderName{
     display: flex;
 }
-.cardNames p{
+.cardHolderName p{
     padding: 5px;
 }
-.validWrapper p{
+.cardValidity p{
 padding: 5px;
 }
 .iconImg{
     width: 40px;
     height: 50px;
 }
-.expiremonthWrapper{
+.monthAndYear{
     text-align: end;
 }
-.expiremonthWrapper span{
+.MonthAndYear span{
 padding:5px
 }
 

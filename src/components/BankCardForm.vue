@@ -5,7 +5,7 @@
         <label for="cardNumber">CARD NUMBER</label>
 		<input required
 			class="card-number"
-			type="text"
+			type="number"
 			v-model="cardDetail.cardNumber"
 			placeholder="XXXX XXXX XXXX XXXX"
 		/>
@@ -28,7 +28,6 @@
 				<input type="number" v-model="cardDetail.validYear" min="2022">
 			</div>
 		</div>
-        
         
         <label for="vendor">VENDOR</label>
         <select class="vendor" v-model="cardDetail.vendor" name="vendor" id="vendor">
