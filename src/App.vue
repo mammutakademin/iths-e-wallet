@@ -1,13 +1,7 @@
 <template>
   <div id="app">
-    <Home v-if="currentPage == 'Home'" 
-    :cards="cards" 
-    @toggleToAddCard="currentPage = 'AddCard'" 
-    />
-
-    <AddCard v-else-if="currentPage == 'AddCard'" 
-    @toWallet="addCard" 
-    />
+    <Home v-if="currentPage == 'Home'" :cards="cards" @toggleToAddCard="currentPage = 'AddCard'" />
+    <AddCard v-else-if="currentPage == 'AddCard'" @toWallet="addCard" />
   </div>
 </template>
 
@@ -47,9 +41,6 @@ export default {
     }
   },
   methods: {
-    // changeView() {
-    //   this.currentPage == "Home" ? this.currentPage == "AddCard" : this.currentPage == "Home"
-    // },
     addCard(cardData) {
       this.card = cardData
       this.cards.push(cardData)
@@ -60,7 +51,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Source+Sans+Pro:wght@300;400&display=swap');
 
 * {

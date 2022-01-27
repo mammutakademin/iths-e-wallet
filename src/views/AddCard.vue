@@ -2,7 +2,6 @@
     <div class="addcard">
         <h1>ADD A NEW BANK CARD</h1>
         <p>NEW CARD</p>
-        <BankCard class="card" :cardData="newCard"/>
         <BankCardForm @submittedForm="processCard" />
     </div>
 </template>
@@ -36,7 +35,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .addcard {
     max-width: 30rem;
 }

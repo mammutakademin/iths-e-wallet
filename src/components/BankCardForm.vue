@@ -45,12 +45,11 @@
 </template>
 
 <script>
-import BankCard from "./BankCard.vue"
+import BankCard from "./BankCard"
 
 export default {
 	name: "BankCardForm",
-    components: { BankCard },
-	props: [""],	
+    components: { BankCard },	
     data() {
         return {
             cardArray: [],
@@ -60,7 +59,9 @@ export default {
                 cardHolderName: "",
                 validMonth: "",
                 validYear: "",
-                CCV: ""
+                ccv: "",
+				valid: "",
+				activecard: false
             }
         }
     },

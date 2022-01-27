@@ -1,32 +1,29 @@
 <template>
-<div class="CardAndForm">
-    <div class="card" :class="[user.vendor]" @click="$emit('click')">      
-        <div class="heroIconsWrapper">
-            <div class="iconsWrapper">
-                <img class="iconsStyle" src="../assets/wifi_white.svg" width="50px">
-                <img class="iconsStyle" src="../assets/chip.svg" width="50px">
+<div class="card-layout">
+    <div class="card" :class="[card.vendor]" @click="$emit('click')">      
+        <div class="icons">
+            <div class="wifiAndChip">
+                <img class="iconImg" src="../assets/wifi_white.svg" width="50px">
+                <img class="iconImg" src="../assets/chip.svg" width="50px">
             </div>
-               
-                 <img v-if="user.vendor" :src="require(`../assets/${user.vendor}.svg`)" class="iconsStyle">            
-                 <img v-else :src="require(`../assets/bitcoin.svg`)" class="iconsStyle">            
+                 <img v-if="card.vendor" :src="require(`../assets/${card.vendor}.svg`)" class="iconImg">            
+                 <img v-else :src="require(`../assets/bitcoin.svg`)" class="iconImg">            
         </div>
-        <div class="cardNumberWrapper">
-            <h3> {{spaceNumbers}} </h3>
+        <div class="cardNumber">
+            <h3>{{spaceNumbers}}</h3>
         </div>
-        <div class="cardTextWrapper">
+        <div class="cardHolder">
             <div class="cardNameWrapper">
                 <p>CARDHOLDER NAME</p>
                 <div class="cardNames">
-                    <p>{{user.cardName}}</p>
+                    <p>{{card.cardHolderName}}</p>
                 </div>     
             </div>
             <div class="validWrapper">
-              <p>VALID THRU</p>
+              <p>VALID UNTIL</p>
               <div class="expiremonthWrapper">
-                  {{FullYear}}
-
-              </div>
-              
+                  {{validDate}}
+              </div>          
             </div>           
         </div>   
     </div> 
@@ -35,36 +32,35 @@
 
 <script>
 export default {
-        props: ['user'],
+    props: ['card'],
     methods:{  
         activeCardFunction(){
-            this.user.activecard=true
-            console.log(this.user)
+            this.card.activecard = true
+            console.log(this.card)
         }
-       
     },
     computed:{
-        FullYear(){
-            return this.user.expireMonth + '/' + this.user.expireYear
+        validDate(){
+            return this.card.validMonth + '/' + this.card.validYear
         },
         spaceNumbers(){
             let space =''
-            for(let i=0; i < this.user.cardNumber.length; i++){
+            for(let i=0; i < this.card.cardNumber.length; i++){
                 if(i % 4 == 0){
                     space +=" ";
                 }
-                space +=this.user.cardNumber[i]
+                space +=this.card.cardNumber[i]
                 if(space.length>19){
                     return space
                 }
             }
-return space
+	return space
         }
     }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 .card{
      
@@ -98,21 +94,21 @@ return space
   color: white;
   text-shadow: 0.5px 0.5px #918f8f;
 }
-.heroIconsWrapper{
+.icons{
     display: flex;
     justify-content: space-between;
  
 }
-.iconsWrapper{
+.wifiAndChip{
     display: flex;
     flex-direction: column;
 }
-.cardNumberWrapper{
+.cardNumber{
     font-size: 24px;
     text-align: center;
 
 }
-.cardTextWrapper{
+.cardHolder{
     display: flex;
     justify-content: space-between;
 }
@@ -128,7 +124,7 @@ return space
 .validWrapper p{
 padding: 5px;
 }
-.iconsStyle{
+.iconImg{
     width: 40px;
     height: 50px;
 }
