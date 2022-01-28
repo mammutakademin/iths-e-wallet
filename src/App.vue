@@ -20,16 +20,23 @@ export default {
   },
   methods: {
     addCard(cardData) {
+      console.log(cardData)
       this.card = cardData
       this.cards.push(cardData)
+      localStorage.setItem("cards", JSON.stringify(this.cards))
       this.currentPage = "Home"
     },
-
+  },
+  beforeMount() {
+    const savedCards=localStorage.getItem("cards")
+    if(savedCards) {
+      this.cards = JSON.parse(savedCards)
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Source+Sans+Pro:wght@300;400&display=swap');
 
 * {

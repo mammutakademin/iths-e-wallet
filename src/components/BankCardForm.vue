@@ -32,12 +32,11 @@
             <option>-</option>
             <option value="bitcoin">Bitcoin Inc</option>
             <option value="blockchain">Blockchain Inc</option>
-            <option value="evilcorp">Evil Corp</option>
+            <option value="evil">Evil Corp</option>
             <option value="ninja">Ninja Bank</option>
         </select>
     
-        <button>ADD CARD</button>
-        <!-- <button @click="addCard">ADD CARD</button> -->
+        <button type="submit">ADD CARD</button>
     </form>
   </div>
 </template>
@@ -59,7 +58,6 @@ export default {
                 validYear: "",
                 ccv: "",
 				valid: "",
-				activecard: false
             }
         }
     },

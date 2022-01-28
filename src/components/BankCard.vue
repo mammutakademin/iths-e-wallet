@@ -63,7 +63,6 @@ export default {
 <style lang="scss" scoped>
 
 .card{
-     
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,63 +75,71 @@ export default {
        
 }
 .bitcoin  {
-  background-color: #ffae34;
-   text-shadow: 0.5px 0.5px #5a5a5a;
+    background-color: #ffae34;
+    text-shadow: 0.5px 0.5px #5a5a5a;  
 }
+
 .blockchain {
-  background-color: #8b58f9;
-  color: white;
-  text-shadow: 0.5px 0.5px #918f8f;
+    background-color: #8b58f9;
+    color: white;
+    text-shadow: 0.5px 0.5px #918f8f;
 }
+
 .evil {
-  background-color: #f33355;
-  color: white;
-  text-shadow: 0.5px 0.5px #918f8f;
+    background-color: #f33355;
+    color: white;
+    text-shadow: 0.5px 0.5px #918f8f;
 }
+
 .ninja {
-  background-color: #222222;
-  color: white;
-  text-shadow: 0.5px 0.5px #918f8f;
+    background-color: #222222;
+    color: white;
+    text-shadow: 0.5px 0.5px #918f8f;
 }
+
 .icons{
     display: flex;
     justify-content: space-between;
- 
 }
+
 .wifiAndChip{
     display: flex;
     flex-direction: column;
 }
+
 .cardNumber{
     font-size: 24px;
     text-align: center;
-
 }
+
 .cardNameSection{
     display: flex;
     justify-content: space-between;
 }
+
 .cardNameLabel p{
     padding: 5px;
 }
+
 .cardHolderName{
     display: flex;
 }
+
 .cardHolderName p{
     padding: 5px;
 }
+
 .cardValidity p{
-padding: 5px;
+    padding: 5px;
 }
+
 .iconImg{
     width: 40px;
     height: 50px;
 }
-.monthAndYear{
-    text-align: end;
-}
+
 .MonthAndYear span{
-padding:5px
+    padding: 5px
 }
 
 </style>
