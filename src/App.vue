@@ -15,29 +15,7 @@ export default {
   data() {
     return {
       currentPage: "Home",
-      cards: [
-        // {
-        //   vendorName: "blockchain",
-        //   cardNumber: "1111 2222 3333 4444",
-        //   cardHolderName: "Austin Powers",
-        //   validMonth: "03",
-        //   validYear: "24"
-        // },
-        // {
-        //   vendorName: "evil",
-        //   cardNumber: "0661 6226 0333 0020",
-        //   cardHolderName: "Megan Markle",
-        //   validMonth: "08",
-        //   validYear: "23"
-        // },
-        // {
-        //   vendorName: "ninja",
-        //   cardNumber: "1213 1234 5555 1908",
-        //   cardHolderName: "O Ren Shii",
-        //   validMonth: "12",
-        //   validYear: "26"
-        // },
-      ],
+      cards: [],
     }
   },
   methods: {

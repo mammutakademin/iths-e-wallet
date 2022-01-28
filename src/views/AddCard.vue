@@ -14,22 +14,20 @@ export default {
     components: { BankCardForm },
     data() {
         return {
-            newCard: {
-                cardNumber: "",
-                cardHolderName: "",
-                vendor: "",
-                validMonth: "MM",
-                validYear: "YY"
-            },
+            // newCard: {
+            //     cardNumber: "",
+            //     cardHolderName: "",
+            //     vendor: "",
+            //     validMonth: "MM",
+            //     validYear: "YY"
+            // },
+            newCard: []
         }
     },
     methods: {
-        jumpTo() {
-            this.$emit("toggleToMain")
-        },
         processCard(cardDetail) {
-            this.card = cardDetail
-            this.$emit('toWallet', this.card)
+            this.newCard = cardDetail
+            this.$emit('toWallet', this.newCard)
         }
     }
 }

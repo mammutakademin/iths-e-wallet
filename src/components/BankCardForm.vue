@@ -1,10 +1,9 @@
 <template>
-  <div class="register-form">
+  <div class="registerForm">
 	<BankCard :card="cardDetail" />
-    <form class="card-form" @submit.prevent="addCard">
+    <form class="cardForm" @submit.prevent="addCard">
         <label for="cardNumber">CARD NUMBER</label>
 		<input required
-			class="card-number"
 			type="number"
 			v-model="cardDetail.cardNumber"
 			placeholder="XXXX XXXX XXXX XXXX"
@@ -12,7 +11,6 @@
 
         <label for="cardHolder-name">CARDHOLDER NAME</label>
         <input required
-			class="cardholder-name"
 			type="text"
 			v-model="cardDetail.cardHolderName"
 			placeholder="FIRSTNAME LASTNAME"
@@ -29,16 +27,17 @@
 			</div>
 		</div>
         
-        <label for="vendor">VENDOR</label>
-        <select class="vendor" v-model="cardDetail.vendor" name="vendor" id="vendor">
-            <option value="00">-</option>
+        <label>VENDOR</label>
+        <select class="vendor" v-model="cardDetail.vendor">
+            <option>-</option>
             <option value="bitcoin">Bitcoin Inc</option>
             <option value="blockchain">Blockchain Inc</option>
             <option value="evilcorp">Evil Corp</option>
             <option value="ninja">Ninja Bank</option>
         </select>
     
-        <button @click="addCard">ADD CARD</button>
+        <button>ADD CARD</button>
+        <!-- <button @click="addCard">ADD CARD</button> -->
     </form>
   </div>
 </template>
@@ -74,12 +73,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.register-form {
+	.registerForm {
 		margin: auto;
 		width: 400px;
 	}
 
-	.card-form {
+	.cardForm {
 		display: flex;
 		flex-direction: column;
 		width: 380px;

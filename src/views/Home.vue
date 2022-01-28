@@ -12,7 +12,7 @@ import BankCard from "../components/BankCard"
 
 export default {
     components: { BankCard },
-    props: ['card'],
+    props: ['card', 'cardsInWallet'],
     methods: {
 		toggleView() {
 			this.$emit("toggleToAddCard")
