@@ -28,7 +28,14 @@ export default {
 
 <style lang="scss" scoped>
 .addcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 30rem;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 8px;
+    padding: 8px 10px;
 }
 
 p {
@@ -38,7 +45,5 @@ p {
     color: rgb(100, 100, 100);
     margin-bottom: 1rem;
 }
-.card{
-    box-shadow: 0 0.1rem 0.4rem 0 rgba(0, 0, 0, 0.5);
-}
+
 </style>

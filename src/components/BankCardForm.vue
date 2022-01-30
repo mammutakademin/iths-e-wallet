@@ -19,11 +19,11 @@
 		<div class="expirySection">
 			<div class="card-validity">
 				<label for="month">MONTH</label>
-				<input type="number" v-model="cardDetail.validMonth" min="1" max="12">
+				<input type="number" v-model="cardDetail.validMonth" min="1" max="12" placeholder="MM">
 			</div>
 			<div class="card-validity">
 				<label for="year">YEAR</label>
-				<input type="number" v-model="cardDetail.validYear" min="2022">
+				<input type="number" v-model="cardDetail.validYear" min="2022" placeholder="YYYY">
 			</div>
 		</div>
         
@@ -71,74 +71,71 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.registerForm {
-		margin: auto;
-		width: 400px;
+.registerForm {
+	margin: auto;
+	width: 400px;
+}
+
+.cardForm {
+	display: flex;
+	flex-direction: column;
+	width: 380px;
+	margin-left: 10px;
+    margin-top: 40px;
+}
+
+.expirySection {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.expirySection .card-validity {
+	display: flex;
+	flex-direction: column;
+
+	input {
+		width: 150px;
 	}
+}
 
-	.cardForm {
-		display: flex;
-		flex-direction: column;
-		width: 380px;
-		margin-left: 10px;
-        margin-top: 40px;
-    }
+label {
+	align-self: flex-start;
+	font-size: 12px;
+	font-family: 'PT Mono', monospace;
+}
 
-	.expirySection {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
+input, select {
+	border-radius: 5px;
+	font-size: 12px;
+	padding: 10px;
+	border-width: 1px;
+	margin-top: 3px;
+	margin-bottom: 15px;
+}
 
-	.expirySection .card-validity {
-		display: flex;
-		flex-direction: column;
+input[type=text]:focus {
+	border: 1px solid gainsboro;
+}
 
-		input {
-			width: 150px;
-		}
-	}
+select {
+	width: 170px;
+}
 
-	label {
-		align-self: flex-start;
-		font-size: 12px;
-		font-family: 'PT Mono', monospace;
-	}
+button {
+	font-family: 'PT Mono', monospace;
+	font-size: 22px;
+	padding: 1rem;
+	border-radius: 8px;
+	margin-top: 240px;
+	border-width: 2px;
+	background-color: rgb(7, 7, 7);
+	font-weight: bold;
+	color: whitesmoke
+}
 
-	input, select {
-		border-radius: 5px;
-		font-size: 12px;
-		padding: 10px;
-		border-width: 1px;
-		margin-top: 3px;
-		margin-bottom: 15px;
-	}
-
-	input[type=text]:focus {
-		border: 1px solid gainsboro;
-	}
-
-	select {
-		width: 170px;
-	}
-
-	button {
-		font-size: 22px;
-		padding: 1rem;
-		border-radius: 5px;
-		margin-top: 2rem;
-		border-width: 2px;
-		background-color: whitesmoke;
-		font-weight: bold;
-	}
-
-	button:hover {
-		background-color: thistle;
-		color: brown;
-	}
-
-	.vendor {
-		width: 380px;
-	}
+.vendor {
+	width: 380px;
+}
 
 </style>

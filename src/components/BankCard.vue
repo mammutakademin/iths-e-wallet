@@ -62,20 +62,22 @@ export default {
 
 <style lang="scss" scoped>
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 380px;
     height: 240px;
+    margin: auto;
     background-color: #D0D0D0;
     border-radius: 8px;
     padding: 10px;
-    box-shadow:  0px 0px 32px rgba(0, 0, 0, 0.1);
-       
+    box-shadow: 0 0.1rem 0.4rem 0 rgba(0, 0, 0, 0.5);
 }
+
 .bitcoin  {
     background-color: #ffae34;
+    color: black;
     text-shadow: 0.5px 0.5px #5a5a5a;  
 }
 
@@ -123,6 +125,7 @@ export default {
 
 .cardHolderName{
     display: flex;
+    flex-direction: flex-start;
 }
 
 .cardHolderName p{

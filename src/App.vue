@@ -50,16 +50,18 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #fdf6cf;
+  background-color: white;
+  box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.1);
   color: #2c3e50;
   margin: 10rem 15rem;
   width: 33rem;
-  height: 896px;
+  height: 986px;
 }
 
 h1, h2, h3 {
   font-family: 'Source Sans Pro', sans-serif;
 }
+
 p {
   font-family: 'PT Mono', monospace;
 }
