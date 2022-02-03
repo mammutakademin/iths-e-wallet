@@ -50,9 +50,9 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: space-between;
   background-color: white;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.1);
-  color: #2c3e50;
   margin: 10rem 15rem;
   width: 33rem;
   height: 986px;

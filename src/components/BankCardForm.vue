@@ -4,14 +4,18 @@
     <form class="cardForm" @submit.prevent="addCard">
         <label for="cardNumber">CARD NUMBER</label>
 		<input required
-			type="number"
+			type="text"
+			pattern="[0-9]{16}"
 			v-model="cardDetail.cardNumber"
+			minlength="16"
+			maxlength="16"
 			placeholder="XXXX XXXX XXXX XXXX"
 		/>
 
         <label for="cardHolder-name">CARDHOLDER NAME</label>
         <input required
 			type="text"
+			maxlength="30"
 			v-model="cardDetail.cardHolderName"
 			placeholder="FIRSTNAME LASTNAME"
 		/>
